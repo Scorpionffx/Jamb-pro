@@ -1,4 +1,4 @@
-name: Build APK
+name: Build APK Ultimate
 on:
   push:
     branches: [ main ]
@@ -7,29 +7,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
-      - name: Setup Flutter
-        uses: subosito/flutter-action@v2
+      - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
-      
-      - name: Create Flutter project structure
+      - name: Recreate Project
         run: |
           mv lib/main.dart /tmp/main.dart
           mv pubspec.yaml /tmp/pubspec.yaml
-          flutter create . --project-name jamb_pro --org com.jamb.pro --template app
+          flutter create . --project-name jamb_pro --org com.jamb.pro --template app --overwrite
           mv /tmp/main.dart lib/main.dart
           mv /tmp/pubspec.yaml pubspec.yaml
-          cat pubspec.yaml
-      
-      - name: Get packages
+      - name: Get Packages
         run: flutter pub get
-      
       - name: Build APK
         run: flutter build apk --release
-      
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: jamb-pro-apk
+          name: jamb-pro-ultimate-apk
           path: build/app/outputs/flutter-apk/app-release.apk
