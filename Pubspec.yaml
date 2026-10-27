@@ -1,0 +1,22 @@
+name: jamb_pro
+description: JAMB Aggregator PRO - Score 350+ with AdMob + Meta Ads
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  google_mobile_ads: ^4.0.0
+  facebook_audience_network: ^1.0.1
+  shared_preferences: ^2.2.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
